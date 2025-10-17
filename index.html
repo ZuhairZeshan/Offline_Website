@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Offline Sync Website</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+</head>
+<body>
+  <header>
+    <h1>Offline Sync App</h1>
+  </header>
+
+  <main>
+    <p>This website works offline and syncs when online!</p>
+    
+    <textarea id="note" placeholder="Write something here..."></textarea><br>
+    <button id="saveBtn">Save Note</button>
+    <p id="status"></p>
+  </main>
+
+  <footer>
+    <p>Made by Zuhair 🚀</p>
+  </footer>
+
+  <script src="script.js"></script>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js')
+        .then(() => console.log('Service Worker Registered ✅'));
+    }
+  </script>
+</body>
+</html>

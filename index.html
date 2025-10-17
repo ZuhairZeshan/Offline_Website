@@ -1,35 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Offline Sync Website</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="manifest" href="manifest.json">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Offline Notes (Sync Enabled)</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="manifest" href="manifest.json"/>
 </head>
 <body>
   <header>
-    <h1>Offline Sync App</h1>
+    <h1>Offline Notes</h1>
+    <div class="status">
+      <span id="netStatus" class="pill offline">Offline</span>
+      <span id="syncStatus" class="pill">Idle</span>
+    </div>
   </header>
 
   <main>
-    <p>This website works offline and syncs when online!</p>
-    
-    <textarea id="note" placeholder="Write something here..."></textarea><br>
-    <button id="saveBtn">Save Note</button>
-    <p id="status"></p>
+    <section class="editor">
+      <input id="noteTitle" placeholder="Note title"/>
+      <textarea id="noteContent" placeholder="Write your note..."></textarea>
+      <div class="actions">
+        <button id="saveBtn">Save</button>
+        <button id="clearBtn" class="ghost">Clear</button>
+      </div>
+    </section>
+
+    <section class="list">
+      <h2>Your Notes</h2>
+      <ul id="notesList"></ul>
+    </section>
   </main>
 
+  <template id="noteItemTpl">
+    <li class="note-item">
+      <div class="meta">
+        <strong class="title"></strong>
+        <small class="time"></small>
+      </div>
+      <div class="controls">
+        <button class="edit">Edit</button>
+        <button class="delete danger">Delete</button>
+      </div>
+    </li>
+  </template>
+
   <footer>
-    <p>Made by Zuhair 🚀</p>
+    <p>Works offline. Syncs when online. 🚀</p>
   </footer>
 
-  <script src="script.js"></script>
-
+  <script src="app.js"></script>
   <script>
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('service-worker.js')
-        .then(() => console.log('Service Worker Registered ✅'));
+      navigator.serviceWorker.register('/sw.js').catch(console.error);
     }
   </script>
 </body>

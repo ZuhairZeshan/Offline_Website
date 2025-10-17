@@ -1,15 +1,11 @@
 {
-  "name": "Offline Sync Website",
-  "short_name": "OfflineSync",
-  "start_url": "index.html",
+  "name": "Offline Notes (Sync Enabled)",
+  "short_name": "Notes",
+  "start_url": "/index.html",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#4a90e2",
   "icons": [
-    {
-      "src": "icon.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    }
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" }
   ]
 }
